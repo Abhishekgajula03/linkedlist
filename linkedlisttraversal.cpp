@@ -20,6 +20,16 @@ Node*traverse(vector<int>&arr){
     }
     return head;
 }
+int lengths(Node*head){
+    Node*temp=head;
+    int count=0;
+    while(temp){
+        count++;
+        temp=temp->next;
+    } 
+    return count;
+}
+
 int main(){
     vector<int>arr={2,3,4,5};
     Node*head=traverse(arr);
@@ -29,4 +39,7 @@ int main(){
         cout<<temp->data<<" ";
         temp=temp->next;
     }
+      cout<<endl;
+    int c=lengths(head);
+    cout<<c;
 }
