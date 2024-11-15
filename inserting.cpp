@@ -24,7 +24,7 @@ Node*buildnode(vector<int>&arr){
 
 void prints(Node*root){
     while(root){
-        cout<<root->data;
+        cout<<root->data<<"->";
         root=root->next;
     }
 }
@@ -43,10 +43,34 @@ void insertatend(Node*&root,int x){
     last->next=temp;
     last=temp;
 }
+
+void insertany(Node*&head,Node*&tail,int position,int k){
+    Node*temp=head;
+    Node*newnode=new Node(k);
+    if(position==1){
+        insertatstart(head,k);
+        return;
+    }
+    int count=1;
+    while(count<position-1){ 
+        temp=temp->next;
+        count++;
+    }
+    if(temp->next==NULL){
+        insertatend(tail,k);
+        return;
+    }
+    newnode->next=temp->next;//pointing to 2
+    temp->next=newnode;//was at 3 then pointing to 69
+    
+}
 int main(){ 
     vector<int>arr={1,3,2,4};
     Node*root=buildnode(arr);
+    Node*head=root;
+    Node*tail=root;
     insertatstart(root,5);
     insertatend(root,9);
+    insertany(head,tail,3,69);
     prints(root);
 }
